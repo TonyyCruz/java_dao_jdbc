@@ -7,7 +7,7 @@ import model.dao.SellerDao;
 import model.entities.Department;
 import model.entities.Seller;
 
-public class Program {
+public class ProgramDepartment {
 
   public static void main(String[] args) {
     SellerDao sellerDao = DaoFactory.createSellerDao();
@@ -28,15 +28,17 @@ public class Program {
     Department departmentObj = new Department(1, "Computers");
     Seller sellerObj =
         new Seller(null, "Anthony Cruz", "tony@email.com", new Date(), 5500.00, departmentObj);
-    // sellerDao.insert(sellerObj);
+    sellerDao.insert(sellerObj);
     System.out.println(sellerObj);
     System.out.println();
     System.out.println("---------- Seller Update ----------");
-    Seller sellerToUpdate = sellerDao.findById(20);
-    sellerObj.setBaseSalary(6200.00);
-    sellerObj.setBirthDate(new Date("1988/02/25"));
-    System.out.println(sellerObj.getBirthDate());
+    Seller sellerToUpdate = sellerDao.findById(sellerObj.getId());
+    sellerToUpdate.setBaseSalary(6200.00);
+    sellerToUpdate.setBirthDate(new Date("1988/02/25"));
     sellerDao.update(sellerToUpdate);
     System.out.println(sellerToUpdate);
+    System.out.println();
+    System.out.println("---------- Seller Delete ----------");
+    sellerDao.deleteById(sellerToUpdate.getId() - 1);
   }
 }
