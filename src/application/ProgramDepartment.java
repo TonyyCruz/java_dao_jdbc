@@ -7,7 +7,7 @@ import model.dao.SellerDao;
 import model.entities.Department;
 import model.entities.Seller;
 
-public class Program {
+public class ProgramDepartment {
 
   public static void main(String[] args) {
     SellerDao sellerDao = DaoFactory.createSellerDao();
